@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#this script works to create a mesh using Alfa AWUS036ACM adapters in wlan1
+
+#shut stuff down
+systemctl stop wpa_supplicant
+systemctl stop NetworkManager  
+
+#set script variables
+INTERFACE=wlan1
+MESH_NAME=natak_mesh  #all units need same mesh name
+MY_IP=192.168.200.2/24 #unique for each unit
+#PHY=MT7612U #for AWUS036ACM not needed for this script
+
+#script
+iw $INTERFACE set type mesh
+iw dev $INTERFACE set meshid $MESH_NAME
+iw dev $INTERFACE set channel 9
+ip addr add $MY_IP dev $INTERFACE
+ifconfig $INTERFACE up
