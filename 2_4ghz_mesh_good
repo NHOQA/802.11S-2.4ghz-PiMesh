@@ -13,8 +13,16 @@ MY_IP=192.168.200.2/24 #unique for each unit
 #PHY=MT7612U #for AWUS036ACM not needed for this script
 
 #script
+ifconfig $INTERFACE down
+iw reg set "US"
+iw dev $INTERFACE set type managed
 iw $INTERFACE set type mesh
 iw dev $INTERFACE set meshid $MESH_NAME
 iw dev $INTERFACE set channel 9
 ip addr add $MY_IP dev $INTERFACE
 ifconfig $INTERFACE up
+
+
+
+
+
