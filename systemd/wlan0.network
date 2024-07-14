@@ -1,0 +1,13 @@
+#this one may not be necessary, copying it because its on current config that is working
+[Match]
+Name=wlan0
+
+[Network]
+Address=192.168.4.1/24
+DHCPServer=yes
+
+[DHCPServer]
+PoolOffset=10
+PoolSize=50
+EmitDNS=no
+DNS=8.8.8.8
