@@ -2,7 +2,10 @@
 
 ####this is to create a wifi mesh node on a pi zero 2 running bookworm and an external wifi dongle#######
 
-create virtual interface for wlan0. keep wlan0 for hotspot and wlan0_ap will be bridged with wlan1 (mesh interface)
+create virtual interface for wlan0. keep wlan0 for hotspot and wlan0_ap will be bridged with wlan1 (mesh interface)<br>
+this assumes you have the wifi dongle plugged into the zero's data usb port. and are using wlan0 to ssh in<br>
+this should handle everything without interrupting your ssh connection<br>
+
 - install hostapd
 - create virtual interface "wlan0_ap" with the command "sudo iw dev wlan0 interface add wlan0_ap type __ap"
 - create/edit /etc/hostapd/hostapd.conf
@@ -13,9 +16,12 @@ create virtual interface for wlan0. keep wlan0 for hotspot and wlan0_ap will be 
 - create /etc/systemd/network/wlan0_ap.network
 - sudo systemctl enable hostapd
 - sudo systemctl start hostapd
-- reboot
+- sudo systemctl enable start_hotspot.service
+- sudo systemctl start start_hotspot.service
+- sudo systemctl restart systemd-networkd
+- reboot to apply changes
 
-
+once you're up, then run mesh_start.sh to get wlan1 to join mesh then you should be able to access mesh through the hotspot
 
 
 RPi mesh network on 2.4ghz
