@@ -7,6 +7,7 @@ create virtual interface for wlan0. keep wlan0 for hotspot and wlan0_ap will be 
 - create virtual interface "wlan0_ap" with the command "sudo iw dev wlan0 interface add wlan0_ap type __ap"
 - create/edit /etc/hostapd/hostapd.conf
 - point hostapd default /etc/default/hostapd at your config file, add line "DAEMON_CONF="/etc/hostapd/hostapd.conf"
+- place start_hotspot.sh in /usr/local/bin
 - create /etc/systemd/network/br0.netdev
 - create /etc/systemd/network/br0.network
 - create /etc/systemd/network/wlan0_ap.network
