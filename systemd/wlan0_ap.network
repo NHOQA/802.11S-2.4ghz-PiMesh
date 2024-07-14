@@ -1,0 +1,10 @@
+[Match]
+Name=wlan0_ap
+
+[Network]
+Address=192.168.150.22/24
+DHCPServer=yes
+
+[DHCPServer]
+PoolOffset=100
+PoolSize=50
