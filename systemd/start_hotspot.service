@@ -1,0 +1,12 @@
+#this needs to be in /etc/systemd/system
+
+[Unit]
+Description=Set up Wi-Fi hotspot
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/start_hotspot.sh
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target
